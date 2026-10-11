@@ -230,3 +230,181 @@ This portfolio is actively being improved and updated as I continue learning and
 Made with ❤️ by **Abhijeet Tiwari**
 
 </div>
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/codewithabhi008/portfolio_abhi.git
+```
+
+### 2. Navigate to the project
+
+```bash
+cd portfolio_abhi
+```
+
+### 3. Open the website
+
+Simply open:
+
+```text
+index.html
+```
+
+in your browser.
+
+### Recommended
+
+For a better development experience, use **VS Code + Live Server**.
+
+---
+
+## 🖥️ Preview
+
+> Add screenshots/GIFs of your portfolio here to make the repository more attractive.
+
+```text
+📸 Portfolio Preview
+
+[ Add your portfolio screenshot here ]
+```
+
+You can add an image like this:
+
+```markdown
+![Portfolio Preview](./assets/portfolio-preview.png)
+```
+
+---
+
+## 🌐 Live Demo
+
+🚀 **Visit my portfolio:**
+**[Add your deployed portfolio URL here]**
+
+If you have deployed the website using GitHub Pages, Vercel, Netlify or another hosting platform, replace the URL above with your live website.
+
+---
+
+## 📄 Resume
+
+My resume is available inside this repository:
+
+```text
+Abhijeet Tiwari_CV.pdf
+```
+
+You can also add a direct resume link to your deployed portfolio.
+
+---
+
+## 📈 Future Improvements
+
+I plan to continuously improve this portfolio with features such as:
+
+* [ ] Add more projects
+* [ ] Add project filtering
+* [ ] Add dark/light theme
+* [ ] Improve accessibility
+* [ ] Add more advanced animations
+* [ ] Add blog section
+* [ ] Add downloadable resume button
+* [ ] Improve SEO and performance
+* [ ] Add project case studies
+* [ ] Add testimonials
+* [ ] Add GitHub project integration
+* [ ] Add contact form backend
+* [ ] Add analytics
+
+---
+
+## 🤝 Contributing
+
+This is a personal portfolio project, but suggestions and improvements are always welcome.
+
+If you find a bug or have a useful suggestion:
+
+1. Fork the repository
+2. Create a new branch
+
+```bash
+git checkout -b feature/improvement
+```
+
+3. Make your changes
+4. Commit your changes
+
+```bash
+git commit -m "Add new improvement"
+```
+
+5. Push your branch
+
+```bash
+git push origin feature/improvement
+```
+
+6. Open a Pull Request
+
+---
+
+## ⭐ Support
+
+If you like this project or found it useful, consider giving the repository a ⭐.
+
+It motivates me to keep building, learning and improving.
+
+---
+
+## 📬 Connect With Me
+
+I'm always open to connecting with developers, recruiters, collaborators and people interested in technology.
+
+### 👨‍💻 GitHub
+
+**CodeWithAbhi008**
+https://github.com/codewithabhi008
+
+### 🌐 Portfolio
+
+**Personal Portfolio**
+(https://codewithaviiee08.github.io/Abhijeet-Tiwari-Portfolio/).
+
+### 💼 LinkedIn
+
+(https://www.linkedin.com/in/abhijeet-tiwari-671a95442?utm_source=share_via&utm_content=profile&utm_medium=member_android)
+
+### 📧 Email
+
+abhijeettiwari955@gmail.com
+
+---
+
+## 🧑‍💻 Author
+
+### Abhijeet Tiwari
+
+**Web Developer | Frontend Developer**
+
+I enjoy building modern, responsive and user-friendly web experiences while continuously learning new technologies and improving my development skills.
+
+---
+
+## 📜 License
+
+This project is available under the **MIT License**.
+
+You are free to use the project for learning and inspiration. If you reuse significant portions of the code or design, giving appropriate credit is appreciated.
+
+---
+
+<div align="center">
+
+### ⭐ Thanks for visiting my portfolio repository!
+
+**Keep Learning • Keep Building • Keep Growing 🚀**
+
+Made with ❤️ by **Abhijeet Tiwari**
+
+</div>
+>>>>>>> e65c944 (update README.md)
