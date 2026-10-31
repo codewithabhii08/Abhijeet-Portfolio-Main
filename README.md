@@ -1,410 +1,199 @@
-# 🌐 Abhijeet Tiwari Portfolio
+
+<!-- ================= HEADER ================= -->
 
 <div align="center">
 
-### 👋 Hi, I'm Abhijeet Tiwari
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:090979,50:4B0082,100:00D4FF&height=220&section=header&text=Abhijeet%20Tiwari&fontSize=55&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Aspiring%20Software%20Engineer%20%7C%20Web%20Developer&descAlignY=60&descSize=18" width="100%"/>
 
-**Aspiring Software Engineer | Frontend Learner | Problem Solver**
+<a href="https://git.io/typing-svg">
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=00D4FF&center=true&vCenter=true&width=600&lines=Welcome+to+my+GitHub+Profile!;Aspiring+Software+Engineer;Frontend+Web+Developer;Learning+%7C+Building+%7C+Growing" alt="Typing SVG"/>
+</a>
 
-A responsive personal portfolio website built to showcase my learning journey, projects, technical growth, certifications, and contact details.
+<br/>
 
-<br>
+<a href="https://abhijeet-portfolio-main.netlify.app">
+<img src="https://img.shields.io/badge/🌐_LIVE_PORTFOLIO-Visit_Now-7B2FF7?style=for-the-badge&logo=netlify&logoColor=white"/>
+</a>
+<a href="https://github.com/codewithaviiee08">
+<img src="https://img.shields.io/badge/GITHUB-Follow_Me-00D4FF?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
 
-[![Portfolio](https://img.shields.io/badge/🌐%20Portfolio-Open%20Website-00C896?style=for-the-badge)](https://codewithaviiee08.github.io/Abhijeet-Tiwari-Portfolio/)
-[![GitHub](https://img.shields.io/badge/GitHub-codewithaviiee08-181717?style=for-the-badge&logo=github)](https://github.com/codewithaviiee08)
-[![Email](https://img.shields.io/badge/Email-abhijeettiwari955@gmail.com-EA4335?style=for-the-badge&logo=gmail)](mailto:abhijeettiwari955@gmail.com)
+<br/><br/>
+
+<img src="https://komarev.com/ghpvc/?username=codewithaviiee08&label=PROFILE+VIEWS&color=7B2FF7&style=for-the-badge"/>
 
 </div>
 
 ---
 
-## 📌 About This Project
+<!-- ================= ABOUT ME ================= -->
 
-This repository contains my personal portfolio website, designed to present my skills, journey, achievements, and learning progress in a clean and modern layout.
+## 💫 About Me
 
-The site highlights:
+<img align="right" width="280" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif"/>
 
-* 💡 My software learning path
-* 🧠 Problem-solving mindset
-* 🛠️ Programming technologies I'm learning
-* 📘 Certification showcase
-* 🖼️ Profile image and personal branding
-* 📬 Contact and social links
-* 📱 Responsive design for desktop and mobile
+Hey there! I'm **Abhijeet Tiwari** 👋
 
----
+I'm an aspiring Software Engineer passionate about coding, technology and creating modern websites.
 
-## ✨ Highlights
+- 💻 Interested in Software Development
+- 🌱 Learning Java, Python and Web Development
+- 🚀 Building real-world projects
+- 🧠 Improving programming logic
+- 🎯 Focused on becoming a skilled developer
+- ⚡ Believe in learning something new every day
 
-### 🏠 Home
-
-Professional landing section with introduction, skills summary, and quick contact actions.
-
-### 👨‍💻 About Me
-
-A story-based section explaining my learning journey, technical interest, and focus areas.
-
-### 🧩 Skills
-
-Current progress for:
-
-* C Programming — completed
-* C++ — completed
-* Java — ongoing
-* Advanced Java — ongoing
-* Python — ongoing
-* HTML5 — ongoing
-* CSS3 — ongoing
-* JavaScript — learning
-
-### 📘 Certification Section
-
-Includes my C Programming certificate image for display and easy viewing.
-
-### 📷 Profile Section
-
-Profile photo is included and displayed in the personal section.
-
-### 📬 Contact
-
-Includes direct links to GitHub, Instagram, X, and email.
+<br clear="right"/>
 
 ---
 
-## 🧰 Tech Stack
+## 🛠️ Tech Stack & Tools
 
-| Technology | Purpose |
-| ----------- | ------- |
-| HTML5 | Structure and content |
-| CSS3 | Styling, layout, responsiveness |
-| JavaScript | Interactions and dynamic behavior |
-| GitHub Pages | Portfolio hosting |
-| SEO Files | robots.txt and sitemap.xml |
+<div align="center">
 
----
+### 💻 Programming Languages
 
-## 📂 Project Structure
+<img src="https://skillicons.dev/icons?i=c,cpp,java,python&theme=dark" />
 
-```text
-Abhijeet-Tiwari-Portfolio/
-├── index.html
-├── style.css
-├── script.js
-├── profile.jpg
-├── C Program Certification.jpeg
-├── Abhijeet Tiwari_CV.pdf
-├── robots.txt
-├── sitemap.xml
-├── README.md
-└── .git/
-```
+### 🌐 Web Development
 
-### File Descriptions
+<img src="https://skillicons.dev/icons?i=html,css,js&theme=dark" />
 
-**`index.html`**
-Main portfolio page structure and all content sections.
+### 🔧 Tools & Platforms
 
-**`style.css`**
-Portfolio styling, typography, layout, and responsive design.
+<img src="https://skillicons.dev/icons?i=git,github,vscode,netlify&theme=dark" />
 
-**`script.js`**
-Theme toggle, typing animation, scroll effects, AI assistant, and upload handling.
-
-**`profile.jpg`**
-My profile image used in the portfolio.
-
-**`C Program Certification.jpeg`**
-C Programming certificate showcased on the portfolio.
-
-**`Abhijeet Tiwari_CV.pdf`**
-My resume file.
-
-**`robots.txt`**
-Search engine crawl instructions.
-
-**`sitemap.xml`**
-Website structure for indexing.
+</div>
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Featured Projects
 
-### 1. Clone the repository
+<div align="center">
 
-```bash
-git clone https://github.com/codewithaviiee08/Abhijeet-Tiwari-Portfolio.git
-```
+### 🌐 1. Personal Portfolio Website
 
-### 2. Open the project
+<a href="https://abhijeet-portfolio-main.netlify.app">
+<img src="https://image.thum.io/get/width/1200/crop/750/https://abhijeet-portfolio-main.netlify.app" width="90%" alt="Portfolio Website Preview"/>
+</a>
 
-```bash
-cd Abhijeet-Tiwari-Portfolio
-```
+**My Personal Developer Portfolio**
 
-### 3. Run locally
+A modern portfolio website showcasing my introduction, skills, education, certificates, projects and contact information.
 
-Open the `index.html` file in a browser, or use a local preview extension like Live Server in VS Code.
+<a href="https://abhijeet-portfolio-main.netlify.app">
+<img src="https://img.shields.io/badge/LIVE_DEMO-00D4FF?style=for-the-badge&logo=netlify&logoColor=white"/>
+</a>
+<a href="https://github.com/codewithaviiee08/Abhijeet-Portfolio-Main">
+<img src="https://img.shields.io/badge/SOURCE_CODE-7B2FF7?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
 
----
+<br/><br/>
 
-## 🌐 Live Demo
+### ☕ 2. Cafe Website
 
-Visit the portfolio here:
+<a href="https://github.com/codewithaviiee08/cafe-website">
+<img src="https://opengraph.githubassets.com/1/codewithaviiee08/cafe-website" width="90%" alt="Cafe Website Repository Preview"/>
+</a>
 
-https://codewithaviiee08.github.io/Abhijeet-Tiwari-Portfolio/
+**Cafe Website Project**
 
----
+A frontend website project focused on creating an attractive cafe website experience.
 
-## 📄 Resume
+<a href="https://github.com/codewithaviiee08/cafe-website">
+<img src="https://img.shields.io/badge/VIEW_PROJECT-00D4FF?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
 
-Resume file included in the repository:
-
-```text
-Abhijeet Tiwari_CV.pdf
-```
-
----
-
-## 💡 Current Learning Focus
-
-I am actively improving in:
-
-* Java
-* Advanced Java
-* Python
-* HTML5
-* CSS3
-* JavaScript
-
-I have already completed my foundation in:
-
-* C Programming
-* C++
+</div>
 
 ---
 
-## 📈 Future Goals
+## 📌 Project Repository Cards
 
-* Add more real projects and case studies
-* Improve portfolio visuals and interactions
-* Add stronger frontend practice
-* Build full-stack and backend understanding
-* Continue growing as a software engineer
+<div align="center">
 
----
+<a href="https://github.com/codewithaviiee08/Abhijeet-Portfolio-Main">
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=codewithaviiee08&repo=Abhijeet-Portfolio-Main&theme=tokyonight&hide_border=true&bg_color=0D1117" />
+</a>
 
-## 📬 Connect With Me
+<a href="https://github.com/codewithaviiee08/cafe-website">
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=codewithaviiee08&repo=cafe-website&theme=tokyonight&hide_border=true&bg_color=0D1117" />
+</a>
 
-### GitHub
-https://github.com/codewithaviiee08
-
-### Instagram
-https://www.instagram.com/imabhiitiwarii.26
-
-### X / Twitter
-https://x.com/Abhijeet260820
-
-### Email
-abhijeettiwari955@gmail.com
+</div>
 
 ---
 
-## 🧑‍💻 About Me
+## 📊 GitHub Statistics
 
-I am an aspiring software engineer focused on learning programming fundamentals, improving my problem-solving ability, and building practical digital projects through continuous practice.
+<div align="center">
+
+<img width="49%" src="https://github-readme-stats.vercel.app/api?username=codewithaviiee08&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF&icon_color=7B2FF7"/>
+
+<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=codewithaviiee08&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF"/>
+
+<br/>
+
+<img width="70%" src="https://streak-stats.demolab.com?user=codewithaviiee08&theme=tokyonight&hide_border=true&background=0D1117&ring=7B2FF7&fire=00D4FF&currStreakLabel=00D4FF"/>
+
+</div>
 
 ---
 
-## ⭐ Project Status
+## 🏆 GitHub Trophies
 
-This portfolio is actively being improved and updated as I continue learning and building new skills.
+<div align="center">
+
+<img src="https://github-profile-trophy.vercel.app/?username=codewithaviiee08&theme=discord&no-frame=true&no-bg=true&margin-w=10&row=1"/>
+
+</div>
+
+---
+
+## 📈 Contribution Graph
+
+<div align="center">
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=codewithaviiee08&bg_color=0D1117&color=00D4FF&line=7B2FF7&point=FFFFFF&area=true&hide_border=true" width="100%"/>
+
+</div>
+
+---
+
+## 🎯 My Goals
+
+- [x] Learn programming fundamentals
+- [x] Build personal portfolio
+- [x] Create frontend projects
+- [ ] Master Java and Python
+- [ ] Learn Data Structures & Algorithms
+- [ ] Explore Full Stack Development
+- [ ] Build more real-world projects
+
+---
+
+## 🤝 Connect With Me
+
+<div align="center">
+
+<a href="https://github.com/codewithaviiee08">
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+<a href="https://abhijeet-portfolio-main.netlify.app">
+<img src="https://img.shields.io/badge/Portfolio-7B2FF7?style=for-the-badge&logo=netlify&logoColor=white"/>
+</a>
+
+</div>
 
 ---
 
 <div align="center">
 
-### ⭐ Thanks for visiting my portfolio repository!
+### 💜 Thanks for Visiting My Profile!
 
-**Keep Learning • Keep Building • Keep Growing 🚀**
+**Code. Learn. Build. Repeat.**
 
-Made with ❤️ by **Abhijeet Tiwari**
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D4FF,50:4B0082,100:090979&height=120&section=footer"/>
 
 </div>
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/codewithabhi008/portfolio_abhi.git
-```
-
-### 2. Navigate to the project
-
-```bash
-cd portfolio_abhi
-```
-
-### 3. Open the website
-
-Simply open:
-
-```text
-index.html
-```
-
-in your browser.
-
-### Recommended
-
-For a better development experience, use **VS Code + Live Server**.
-
----
-
-## 🖥️ Preview
-
-> Add screenshots/GIFs of your portfolio here to make the repository more attractive.
-
-```text
-📸 Portfolio Preview
-
-[ Add your portfolio screenshot here ]
-```
-
-You can add an image like this:
-
-```markdown
-![Portfolio Preview](./assets/portfolio-preview.png)
-```
-
----
-
-## 🌐 Live Demo
-
-🚀 **Visit my portfolio:**
-**[Add your deployed portfolio URL here]**
-
-If you have deployed the website using GitHub Pages, Vercel, Netlify or another hosting platform, replace the URL above with your live website.
-
----
-
-## 📄 Resume
-
-My resume is available inside this repository:
-
-```text
-Abhijeet Tiwari_CV.pdf
-```
-
-You can also add a direct resume link to your deployed portfolio.
-
----
-
-## 📈 Future Improvements
-
-I plan to continuously improve this portfolio with features such as:
-
-* [ ] Add more projects
-* [ ] Add project filtering
-* [ ] Add dark/light theme
-* [ ] Improve accessibility
-* [ ] Add more advanced animations
-* [ ] Add blog section
-* [ ] Add downloadable resume button
-* [ ] Improve SEO and performance
-* [ ] Add project case studies
-* [ ] Add testimonials
-* [ ] Add GitHub project integration
-* [ ] Add contact form backend
-* [ ] Add analytics
-
----
-
-## 🤝 Contributing
-
-This is a personal portfolio project, but suggestions and improvements are always welcome.
-
-If you find a bug or have a useful suggestion:
-
-1. Fork the repository
-2. Create a new branch
-
-```bash
-git checkout -b feature/improvement
-```
-
-3. Make your changes
-4. Commit your changes
-
-```bash
-git commit -m "Add new improvement"
-```
-
-5. Push your branch
-
-```bash
-git push origin feature/improvement
-```
-
-6. Open a Pull Request
-
----
-
-## ⭐ Support
-
-If you like this project or found it useful, consider giving the repository a ⭐.
-
-It motivates me to keep building, learning and improving.
-
----
-
-## 📬 Connect With Me
-
-I'm always open to connecting with developers, recruiters, collaborators and people interested in technology.
-
-### 👨‍💻 GitHub
-
-**CodeWithAbhi008**
-https://github.com/codewithabhi008
-
-### 🌐 Portfolio
-
-**Personal Portfolio**
-(https://codewithaviiee08.github.io/Abhijeet-Tiwari-Portfolio/).
-
-### 💼 LinkedIn
-
-(https://www.linkedin.com/in/abhijeet-tiwari-671a95442?utm_source=share_via&utm_content=profile&utm_medium=member_android)
-
-### 📧 Email
-
-abhijeettiwari955@gmail.com
-
----
-
-## 🧑‍💻 Author
-
-### Abhijeet Tiwari
-
-**Web Developer | Frontend Developer**
-
-I enjoy building modern, responsive and user-friendly web experiences while continuously learning new technologies and improving my development skills.
-
----
-
-## 📜 License
-
-This project is available under the **MIT License**.
-
-You are free to use the project for learning and inspiration. If you reuse significant portions of the code or design, giving appropriate credit is appreciated.
-
----
-
-<div align="center">
-
-### ⭐ Thanks for visiting my portfolio repository!
-
-**Keep Learning • Keep Building • Keep Growing 🚀**
-
-Made with ❤️ by **Abhijeet Tiwari**
-
-</div>
->>>>>>> e65c944 (update README.md)
