@@ -28,8 +28,9 @@
     const photoImage = section.querySelector(".profile-avatar-image");
     const fallback = section.querySelector(".profile-avatar-fallback");
     const status = section.querySelector(".profile-picture-status");
-    const storageKey = "portfolio-profile-picture";
-    const defaultPhoto = document.querySelector(".profile-banner img")?.getAttribute("src") || "";
+    // Use the profile.png file already included at the repository root as the default photo.
+    const storageKey = "portfolio-profile-picture-v2";
+    const defaultPhoto = "profile.png";
 
     const showPhoto = (source, isCustom) => {
       if (source) {
@@ -121,22 +122,16 @@
         }
 
         showPhoto(defaultPhoto, false);
-        if (status) {
-          status.textContent = defaultPhoto
-            ? "Restored the original profile photo."
-            : "Removed your saved photo.";
-        }
+        if (status) status.textContent = "Restored profile.png as your profile photo.";
       });
     }
 
     try {
       const savedPhoto = localStorage.getItem(storageKey);
       if (savedPhoto) showPhoto(savedPhoto, true);
-      else if (defaultPhoto) showPhoto(defaultPhoto, false);
-      else showPhoto("", false);
+      else showPhoto(defaultPhoto, false);
     } catch {
-      if (defaultPhoto) showPhoto(defaultPhoto, false);
-      else showPhoto("", false);
+      showPhoto(defaultPhoto, false);
     }
   };
 
