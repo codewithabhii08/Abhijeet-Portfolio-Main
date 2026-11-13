@@ -1,199 +1,119 @@
+👋 Hi, I'm Abhijeet Tiwari
+Aspiring Software Engineer | Frontend Web Developer
 
-<!-- ================= HEADER ================= -->
+<p align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:090979,50:4B0082,100:00D4FF&height=180&section=header&text=Abhijeet%20Tiwari&fontSize=48&fontColor=ffffff&fontAlignY=38&desc=Building%20Ideas%20Into%20Digital%20Experiences&descAlignY=60&descSize=16" width="100%" />
+</p>
 
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:090979,50:4B0082,100:00D4FF&height=220&section=header&text=Abhijeet%20Tiwari&fontSize=55&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Aspiring%20Software%20Engineer%20%7C%20Web%20Developer&descAlignY=60&descSize=18" width="100%"/>
-
-<a href="https://git.io/typing-svg">
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=00D4FF&center=true&vCenter=true&width=600&lines=Welcome+to+my+GitHub+Profile!;Aspiring+Software+Engineer;Frontend+Web+Developer;Learning+%7C+Building+%7C+Growing" alt="Typing SVG"/>
-</a>
-
-<br/>
-
+<p align="center">
 <a href="https://abhijeet-portfolio-main.netlify.app">
-<img src="https://img.shields.io/badge/🌐_LIVE_PORTFOLIO-Visit_Now-7B2FF7?style=for-the-badge&logo=netlify&logoColor=white"/>
+<img src="https://img.shields.io/badge/Portfolio-Visit%20Website-7B2FF7?style=for-the-badge&logo=netlify&logoColor=white" />
 </a>
 <a href="https://github.com/codewithaviiee08">
-<img src="https://img.shields.io/badge/GITHUB-Follow_Me-00D4FF?style=for-the-badge&logo=github&logoColor=white"/>
+<img src="https://img.shields.io/badge/GitHub-Follow%20Me-181717?style=for-the-badge&logo=github" />
 </a>
+</p>
 
-<br/><br/>
+<p align="center">
+<img src="https://komarev.com/ghpvc/?username=codewithaviiee08&label=Profile%20Views&color=7B2FF7&style=flat-square" />
+</p>
 
-<img src="https://komarev.com/ghpvc/?username=codewithaviiee08&label=PROFILE+VIEWS&color=7B2FF7&style=for-the-badge"/>
+🚀 About Me
 
-</div>
+Hello! I'm Abhijeet Tiwari, an aspiring Software Engineer passionate about programming, web development, and building meaningful digital experiences.
 
----
+I enjoy learning new technologies, solving programming problems, and turning ideas into functional projects.
 
-<!-- ================= ABOUT ME ================= -->
+💻 Interested in Software Engineering and Web Development.
+🌱 Currently learning Java, Python, and modern web technologies.
+🛠️ Building practical projects to improve my development skills.
+🧠 Focused on strengthening programming logic and problem-solving.
+🎯 Working towards becoming a skilled Software Developer.
 
-## 💫 About Me
+My philosophy: Learn consistently, build practically, and improve continuously.
 
-<img align="right" width="280" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif"/>
+🛠️ Technical Skills
+Programming Languages
 
-Hey there! I'm **Abhijeet Tiwari** 👋
-
-I'm an aspiring Software Engineer passionate about coding, technology and creating modern websites.
-
-- 💻 Interested in Software Development
-- 🌱 Learning Java, Python and Web Development
-- 🚀 Building real-world projects
-- 🧠 Improving programming logic
-- 🎯 Focused on becoming a skilled developer
-- ⚡ Believe in learning something new every day
-
-<br clear="right"/>
-
----
-
-## 🛠️ Tech Stack & Tools
-
-<div align="center">
-
-### 💻 Programming Languages
-
+<p>
 <img src="https://skillicons.dev/icons?i=c,cpp,java,python&theme=dark" />
+</p>
 
-### 🌐 Web Development
+Web Technologies
 
+<p>
 <img src="https://skillicons.dev/icons?i=html,css,js&theme=dark" />
+</p>
 
-### 🔧 Tools & Platforms
+Tools & Platforms
 
+<p>
 <img src="https://skillicons.dev/icons?i=git,github,vscode,netlify&theme=dark" />
+</p>
 
-</div>
+💼 Featured Projects
+1. Personal Portfolio Website
 
----
+A personal portfolio designed to showcase my profile, technical skills, education, certificates, projects, and contact information.
 
-## 🚀 Featured Projects
+🌐 Live Demo: Visit Portfolio
+💻 Source Code: GitHub Repository
+2. Cafe Website
 
-<div align="center">
+A frontend web development project focused on creating an attractive and user-friendly online cafe experience.
 
-### 🌐 1. Personal Portfolio Website
+💻 Source Code: View Cafe Website
+📊 GitHub Statistics
 
-<a href="https://abhijeet-portfolio-main.netlify.app">
-<img src="https://image.thum.io/get/width/1200/crop/750/https://abhijeet-portfolio-main.netlify.app" width="90%" alt="Portfolio Website Preview"/>
-</a>
+<p align="center">
+<img width="49%" src="https://github-readme-stats.vercel.app/api?username=codewithaviiee08&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF&icon_color=7B2FF7" />
+<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=codewithaviiee08&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF" />
+</p>
 
-**My Personal Developer Portfolio**
+<p align="center">
+<img width="70%" src="https://streak-stats.demolab.com?user=codewithaviiee08&theme=tokyonight&hide_border=true&background=0D1117&ring=7B2FF7&fire=00D4FF&currStreakLabel=00D4FF" />
+</p>
 
-A modern portfolio website showcasing my introduction, skills, education, certificates, projects and contact information.
+🏆 GitHub Achievements
 
-<a href="https://abhijeet-portfolio-main.netlify.app">
-<img src="https://img.shields.io/badge/LIVE_DEMO-00D4FF?style=for-the-badge&logo=netlify&logoColor=white"/>
-</a>
-<a href="https://github.com/codewithaviiee08/Abhijeet-Portfolio-Main">
-<img src="https://img.shields.io/badge/SOURCE_CODE-7B2FF7?style=for-the-badge&logo=github&logoColor=white"/>
-</a>
+<p align="center">
+<img src="https://github-profile-trophy.vercel.app/?username=codewithaviiee08&theme=tokyonight&no-frame=true&no-bg=true&margin-w=8&column=6" width="100%" />
+</p>
 
-<br/><br/>
+📈 Contribution Activity
 
-### ☕ 2. Cafe Website
+<p align="center">
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=codewithaviiee08&bg_color=0D1117&color=00D4FF&line=7B2FF7&point=FFFFFF&area=true&hide_border=true" width="100%" />
+</p>
 
-<a href="https://github.com/codewithaviiee08/cafe-website">
-<img src="https://opengraph.githubassets.com/1/codewithaviiee08/cafe-website" width="90%" alt="Cafe Website Repository Preview"/>
-</a>
+🎯 Current Learning Goals
+Learn programming fundamentals
+Build a personal portfolio
+Develop frontend projects
+Strengthen Java and Python skills
+Master Data Structures and Algorithms
+Explore Full Stack Development
+Build more real-world applications
+🤝 Let's Connect
 
-**Cafe Website Project**
+I'm always interested in learning, collaborating, and connecting with fellow developers.
 
-A frontend website project focused on creating an attractive cafe website experience.
-
-<a href="https://github.com/codewithaviiee08/cafe-website">
-<img src="https://img.shields.io/badge/VIEW_PROJECT-00D4FF?style=for-the-badge&logo=github&logoColor=white"/>
-</a>
-
-</div>
-
----
-
-## 📌 Project Repository Cards
-
-<div align="center">
-
-<a href="https://github.com/codewithaviiee08/Abhijeet-Portfolio-Main">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=codewithaviiee08&repo=Abhijeet-Portfolio-Main&theme=tokyonight&hide_border=true&bg_color=0D1117" />
-</a>
-
-<a href="https://github.com/codewithaviiee08/cafe-website">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=codewithaviiee08&repo=cafe-website&theme=tokyonight&hide_border=true&bg_color=0D1117" />
-</a>
-
-</div>
-
----
-
-## 📊 GitHub Statistics
-
-<div align="center">
-
-<img width="49%" src="https://github-readme-stats.vercel.app/api?username=codewithaviiee08&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF&icon_color=7B2FF7"/>
-
-<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=codewithaviiee08&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D4FF"/>
-
-<br/>
-
-<img width="70%" src="https://streak-stats.demolab.com?user=codewithaviiee08&theme=tokyonight&hide_border=true&background=0D1117&ring=7B2FF7&fire=00D4FF&currStreakLabel=00D4FF"/>
-
-</div>
-
----
-
-## 🏆 GitHub Trophies
-
-<div align="center">
-
-<img src="https://github-profile-trophy.vercel.app/?username=codewithaviiee08&theme=discord&no-frame=true&no-bg=true&margin-w=10&row=1"/>
-
-</div>
-
----
-
-## 📈 Contribution Graph
-
-<div align="center">
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=codewithaviiee08&bg_color=0D1117&color=00D4FF&line=7B2FF7&point=FFFFFF&area=true&hide_border=true" width="100%"/>
-
-</div>
-
----
-
-## 🎯 My Goals
-
-- [x] Learn programming fundamentals
-- [x] Build personal portfolio
-- [x] Create frontend projects
-- [ ] Master Java and Python
-- [ ] Learn Data Structures & Algorithms
-- [ ] Explore Full Stack Development
-- [ ] Build more real-world projects
-
----
-
-## 🤝 Connect With Me
-
-<div align="center">
-
+<p align="center">
 <a href="https://github.com/codewithaviiee08">
-<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/>
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
 </a>
-
 <a href="https://abhijeet-portfolio-main.netlify.app">
-<img src="https://img.shields.io/badge/Portfolio-7B2FF7?style=for-the-badge&logo=netlify&logoColor=white"/>
+<img src="https://img.shields.io/badge/Portfolio-7B2FF7?style=for-the-badge&logo=netlify&logoColor=white" />
 </a>
+</p>
 
-</div>
+<p align="center">
+**Thanks for visiting my GitHub profile!**
 
----
+Code. Learn. Build. Repeat.
 
-<div align="center">
+</p>
 
-### 💜 Thanks for Visiting My Profile!
-
-**Code. Learn. Build. Repeat.**
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D4FF,50:4B0082,100:090979&height=120&section=footer"/>
-
-</div>
+<p align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D4FF,50:4B0082,100:090979&height=100&section=footer" width="100%" />
+</p>
