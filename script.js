@@ -2,7 +2,6 @@
   const root = document.documentElement;
   const intro = document.getElementById("intro");
   const site = document.getElementById("site");
-  const enter = document.getElementById("enter");
   const menu = document.getElementById("nav");
   const hamburger = document.getElementById("hamb");
   const typed = document.getElementById("typed");
@@ -13,153 +12,50 @@
   const cursorRing = document.querySelector(".cursor-ring");
   const contactEmail = "abhijeettiwari0408@gmail.com";
 
-  // Load a fresh stylesheet so browser/CDN caches don't keep showing the old layout.
-  const refreshStyles = document.createElement("link");
-  refreshStyles.rel = "stylesheet";
-  refreshStyles.href = "ui-refresh.css?v=interview-2026-11-13";
-  document.head.appendChild(refreshStyles);
-
-  // Use the exact case-sensitive certificate asset path present in the repository.
-  document.querySelectorAll(".certificate-image-link").forEach((link) => {
-    const image = link.querySelector("img");
-    const certificatePath = "assets/certificates/Certificate.jpeg";
-    link.href = certificatePath;
-    link.target = "_blank";
-    link.rel = "noopener";
-    if (!image) return;
-    image.src = certificatePath;
-    image.alt = "Abhijeet Tiwari's C++ certificate";
-    image.loading = "eager";
-    image.addEventListener("error", () => {
-      link.classList.add("certificate-image-unavailable");
-      link.setAttribute("aria-label", "Open C++ certificate file");
-      let message = link.querySelector(".certificate-image-fallback");
-      if (!message) {
-        message = document.createElement("span");
-        message.className = "certificate-image-fallback";
-        message.textContent = "Open certificate ↗";
-        link.appendChild(message);
-      }
-    }, { once: true });
-  });
-
-  // Reveal and standardize certificate panels; don't let a failed preview hide its details.
-  document.querySelectorAll(".cert-strip, .certificate-showcase").forEach((card) => {
-    card.hidden = false;
-    card.classList.add("visible", "certificate-card-fixed");
-  });
-
-  // Profile photo: use the repository's profile.png by default; uploaded images stay local to this browser.
-  const profileSection = document.getElementById("profile-picture");
-  if (profileSection) {
-    const changeButton = profileSection.querySelector(".profile-picture-change");
-    const resetButton = profileSection.querySelector(".profile-picture-reset");
-    const photoInput = profileSection.querySelector(".profile-picture-input");
-    const photoImage = profileSection.querySelector(".profile-avatar-image");
-    const fallback = profileSection.querySelector(".profile-avatar-fallback");
-    const status = profileSection.querySelector(".profile-picture-status");
-    const storageKey = "portfolio-profile-picture-v2";
-    const defaultPhoto = "profile.png";
-
-    if (changeButton && photoInput) {
-      changeButton.textContent = "＋ Upload / change photo";
-      changeButton.setAttribute("aria-label", "Upload or change profile photo");
-      changeButton.addEventListener("click", () => photoInput.click());
+  // Restore the welcome screen and keep the portfolio hidden until the visitor enters.
+  const introStyles = document.createElement("style");
+  introStyles.textContent = `
+    .site:not(.ready) { visibility: hidden; opacity: 0; pointer-events: none; }
+    .site.ready { visibility: visible; opacity: 1; pointer-events: auto; transition: opacity .65s ease; }
+    .intro { z-index: 20; }
+    .intro-center { display: flex; flex-direction: column; align-items: center; }
+    .intro-enter {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      margin-top: 30px; padding: 14px 25px; border: 1px solid rgba(167,139,250,.55);
+      border-radius: 999px; background: linear-gradient(120deg,#a78bfa,#67b7ff);
+      color: #10101b; font: 700 14px Inter,system-ui,sans-serif; cursor: pointer;
+      box-shadow: 0 10px 32px rgba(103,91,200,.25); transition: transform .2s ease, box-shadow .2s ease;
     }
-    if (resetButton) resetButton.textContent = "↺ Reset to original photo";
+    .intro-enter:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(103,91,200,.38); }
+    .intro-enter:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    @media(prefers-reduced-motion:reduce) { .site.ready,.intro-enter { transition:none; } }
+  `;
+  document.head.appendChild(introStyles);
 
-    const showPhoto = (source, custom) => {
-      if (source && photoImage) {
-        photoImage.src = source;
-        photoImage.hidden = false;
-        if (fallback) fallback.hidden = true;
-      } else {
-        photoImage?.removeAttribute("src");
-        if (photoImage) photoImage.hidden = true;
-        if (fallback) fallback.hidden = false;
-      }
-      if (resetButton) resetButton.hidden = !custom;
-    };
-
-    photoImage?.addEventListener("error", () => {
-      if (photoImage.getAttribute("src") === defaultPhoto) {
-        photoImage.hidden = true;
-        if (fallback) fallback.hidden = false;
-        if (status) status.textContent = "Could not load profile.png. Check the deployed site files.";
-      }
-    });
-
-    photoInput?.addEventListener("change", () => {
-      const file = photoInput.files?.[0];
-      if (!file) return;
-      if (!file.type.startsWith("image/")) {
-        if (status) status.textContent = "Please choose an image file.";
-        photoInput.value = "";
-        return;
-      }
-      if (file.size > 10 * 1024 * 1024) {
-        if (status) status.textContent = "That image is over 10 MB. Choose a smaller file.";
-        photoInput.value = "";
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onerror = () => {
-        if (status) status.textContent = "We couldn't read that image. Please try another one.";
-        photoInput.value = "";
-      };
-      reader.onload = () => {
-        const source = new Image();
-        source.onerror = () => {
-          if (status) status.textContent = "That image couldn't be opened. Please try another one.";
-          photoInput.value = "";
-        };
-        source.onload = () => {
-          const scale = Math.min(1, 720 / Math.max(source.width, source.height));
-          const resized = document.createElement("canvas");
-          resized.width = Math.max(1, Math.round(source.width * scale));
-          resized.height = Math.max(1, Math.round(source.height * scale));
-          const context = resized.getContext("2d");
-          if (!context) {
-            if (status) status.textContent = "Photo editing isn't supported by this browser.";
-            return;
-          }
-          context.drawImage(source, 0, 0, resized.width, resized.height);
-          const photo = resized.toDataURL("image/jpeg", 0.82);
-          try {
-            localStorage.setItem(storageKey, photo);
-            showPhoto(photo, true);
-            if (status) status.textContent = "Photo saved on this browser. You can change or reset it anytime.";
-          } catch {
-            showPhoto(photo, false);
-            if (status) status.textContent = "Preview updated, but browser storage is full; try a smaller photo.";
-          }
-          photoInput.value = "";
-        };
-        source.src = String(reader.result);
-      };
-      reader.readAsDataURL(file);
-    });
-
-    resetButton?.addEventListener("click", () => {
-      try { localStorage.removeItem(storageKey); } catch { /* Continue with the repository default. */ }
-      showPhoto(defaultPhoto, false);
-      if (status) status.textContent = "Restored your original profile photo.";
-    });
-
-    try {
-      const saved = localStorage.getItem(storageKey);
-      showPhoto(saved || defaultPhoto, Boolean(saved));
-    } catch {
-      showPhoto(defaultPhoto, false);
-    }
+  let enterButton = document.getElementById("enter");
+  if (intro && site && !enterButton) {
+    enterButton = document.createElement("button");
+    enterButton.id = "enter";
+    enterButton.type = "button";
+    enterButton.className = "intro-enter";
+    enterButton.innerHTML = 'Enter to Portfolio <span aria-hidden="true">↗</span>';
+    intro.querySelector(".intro-center")?.appendChild(enterButton);
   }
 
-  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
-    const [address, ...query] = link.href.slice(7).split("?");
-    if (address) link.href = `mailto:${contactEmail}${query.length ? `?${query.join("?")}` : ""}`;
-  });
+  const revealSite = () => {
+    if (site) site.classList.add("ready");
+    if (intro) intro.classList.add("done");
+  };
+  if (enterButton && intro && site) {
+    enterButton.addEventListener("click", () => {
+      revealSite();
+      window.setTimeout(() => intro.remove(), 700);
+    }, { once: true });
+  } else {
+    revealSite();
+  }
 
+  // Theme switcher.
   const updateThemeButtons = () => {
     document.querySelectorAll(".theme").forEach((button) => {
       button.textContent = root.dataset.theme === "dark" ? "☼" : "☾";
@@ -169,27 +65,15 @@
   try {
     const savedTheme = localStorage.getItem("portfolio-theme");
     if (savedTheme === "dark" || savedTheme === "light") root.dataset.theme = savedTheme;
-  } catch { /* The page still works without browser storage. */ }
+  } catch { /* Continue with the default theme if storage is unavailable. */ }
   updateThemeButtons();
-  document.querySelectorAll(".theme").forEach((button) => {
-    button.addEventListener("click", () => {
-      root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
-      updateThemeButtons();
-      try { localStorage.setItem("portfolio-theme", root.dataset.theme); } catch { /* Optional preference. */ }
-    });
-  });
+  document.querySelectorAll(".theme").forEach((button) => button.addEventListener("click", () => {
+    root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+    updateThemeButtons();
+    try { localStorage.setItem("portfolio-theme", root.dataset.theme); } catch { /* Theme toggle still works. */ }
+  }));
 
-  const revealSite = () => {
-    if (site) site.classList.add("ready");
-    if (intro) intro.classList.add("done");
-  };
-  if (enter && intro && site) {
-    enter.addEventListener("click", () => {
-      revealSite();
-      window.setTimeout(() => intro.remove(), 900);
-    });
-  } else revealSite();
-
+  // Accessible mobile navigation.
   if (menu && hamburger) {
     hamburger.setAttribute("aria-expanded", "false");
     hamburger.addEventListener("click", () => {
@@ -202,6 +86,7 @@
     }));
   }
 
+  // Type animation, if its target exists on the page.
   if (typed) {
     const words = ["Software Development", "Problem Solving", "Web Development", "Programming"];
     let wordIndex = 0, charIndex = 0, deleting = false;
@@ -217,6 +102,7 @@
     type();
   }
 
+  // Animate visible content, but reveal immediately when the browser lacks observer support.
   const revealElements = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
@@ -229,42 +115,102 @@
   } else revealElements.forEach((element) => element.classList.add("visible"));
 
   if (year) year.textContent = String(new Date().getFullYear());
-  if (contactForm) {
-    contactForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const data = new FormData(contactForm);
-      const subject = encodeURIComponent(data.get("subject") || "Portfolio inquiry");
-      const body = encodeURIComponent(`Name: ${data.get("name") || ""}\nEmail: ${data.get("email") || ""}\n\n${data.get("message") || ""}`);
-      window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+
+  // Use the requested contact address for mail links and the contact form.
+  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    const [address, ...query] = link.href.slice(7).split("?");
+    if (address) link.href = `mailto:${contactEmail}${query.length ? `?${query.join("?")}` : ""}`;
+  });
+  if (contactForm) contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(contactForm);
+    const subject = encodeURIComponent(data.get("subject") || "Portfolio inquiry");
+    const body = encodeURIComponent(`Name: ${data.get("name") || ""}\nEmail: ${data.get("email") || ""}\n\n${data.get("message") || ""}`);
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+  });
+
+  // Profile photo picker: profile.png is the default; uploads persist in this browser only.
+  const profile = document.getElementById("profile-picture");
+  if (profile) {
+    const change = profile.querySelector(".profile-picture-change");
+    const reset = profile.querySelector(".profile-picture-reset");
+    const input = profile.querySelector(".profile-picture-input");
+    const image = profile.querySelector(".profile-avatar-image");
+    const fallback = profile.querySelector(".profile-avatar-fallback");
+    const status = profile.querySelector(".profile-picture-status");
+    const storageKey = "portfolio-profile-picture-v2";
+    const defaultPhoto = "profile.png";
+    const showPhoto = (src, custom) => {
+      if (src && image) { image.src = src; image.hidden = false; if (fallback) fallback.hidden = true; }
+      else { image?.removeAttribute("src"); if (image) image.hidden = true; if (fallback) fallback.hidden = false; }
+      if (reset) reset.hidden = !custom;
+    };
+    if (change && input) {
+      change.textContent = "＋ Upload / change photo";
+      change.addEventListener("click", () => input.click());
+    }
+    if (reset) reset.textContent = "↺ Reset to original photo";
+    image?.addEventListener("error", () => {
+      if (image.getAttribute("src") === defaultPhoto) {
+        image.hidden = true; if (fallback) fallback.hidden = false;
+        if (status) status.textContent = "Could not load profile.png. Check the deployed site files.";
+      }
     });
+    input?.addEventListener("change", () => {
+      const file = input.files?.[0];
+      if (!file) return;
+      if (!file.type.startsWith("image/") || file.size > 10 * 1024 * 1024) {
+        if (status) status.textContent = file.type.startsWith("image/") ? "Image is over 10 MB; choose a smaller one." : "Please choose an image file.";
+        input.value = ""; return;
+      }
+      const reader = new FileReader();
+      reader.onerror = () => { if (status) status.textContent = "Could not read the image. Please try another."; };
+      reader.onload = () => {
+        const source = new Image();
+        source.onload = () => {
+          const scale = Math.min(1, 720 / Math.max(source.width, source.height));
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.max(1, Math.round(source.width * scale));
+          canvas.height = Math.max(1, Math.round(source.height * scale));
+          const context = canvas.getContext("2d");
+          if (!context) return;
+          context.drawImage(source, 0, 0, canvas.width, canvas.height);
+          const data = canvas.toDataURL("image/jpeg", 0.82);
+          try { localStorage.setItem(storageKey, data); showPhoto(data, true); if (status) status.textContent = "Photo saved in this browser."; }
+          catch { showPhoto(data, false); if (status) status.textContent = "Preview updated, but browser storage is full."; }
+          input.value = "";
+        };
+        source.src = String(reader.result);
+      };
+      reader.readAsDataURL(file);
+    });
+    reset?.addEventListener("click", () => {
+      try { localStorage.removeItem(storageKey); } catch { /* Restore visible default anyway. */ }
+      showPhoto(defaultPhoto, false);
+      if (status) status.textContent = "Restored your original profile photo.";
+    });
+    try { const saved = localStorage.getItem(storageKey); showPhoto(saved || defaultPhoto, Boolean(saved)); }
+    catch { showPhoto(defaultPhoto, false); }
   }
 
+  // Animate the background stars.
   if (canvas) {
     const context = canvas.getContext("2d");
     if (context) {
       let stars = [];
       const resizeCanvas = () => {
         const ratio = Math.min(window.devicePixelRatio || 1, 2);
-        canvas.width = window.innerWidth * ratio;
-        canvas.height = window.innerHeight * ratio;
-        canvas.style.width = `${window.innerWidth}px`;
-        canvas.style.height = `${window.innerHeight}px`;
+        canvas.width = window.innerWidth * ratio; canvas.height = window.innerHeight * ratio;
+        canvas.style.width = `${window.innerWidth}px`; canvas.style.height = `${window.innerHeight}px`;
         context.setTransform(ratio, 0, 0, ratio, 0, 0);
         stars = Array.from({ length: 75 }, () => ({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, radius: Math.random() * 1.4 + 0.2, speed: Math.random() * 0.8 + 0.04 }));
       };
-      const drawStars = () => {
+      const draw = () => {
         context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        stars.forEach((star) => {
-          context.fillStyle = "rgba(120, 190, 240, 0.7)";
-          context.beginPath(); context.arc(star.x, star.y, star.radius, 0, Math.PI * 2); context.fill();
-          star.y += star.speed;
-          if (star.y > window.innerHeight) star.y = 0;
-        });
-        window.requestAnimationFrame(drawStars);
+        stars.forEach((star) => { context.fillStyle = "rgba(120,190,240,.7)"; context.beginPath(); context.arc(star.x, star.y, star.radius, 0, Math.PI * 2); context.fill(); star.y += star.speed; if (star.y > window.innerHeight) star.y = 0; });
+        window.requestAnimationFrame(draw);
       };
-      resizeCanvas();
-      window.addEventListener("resize", resizeCanvas);
-      drawStars();
+      resizeCanvas(); window.addEventListener("resize", resizeCanvas); draw();
     }
   }
 
