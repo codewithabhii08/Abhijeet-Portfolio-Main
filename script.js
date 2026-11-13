@@ -13,11 +13,135 @@
   const cursorRing = document.querySelector(".cursor-ring");
   const contactEmail = "abhijeettiwari0408@gmail.com";
 
-  // Load a focused visual refresh without changing the existing page structure.
+  // Load the portfolio's additional responsive styling.
   const refreshStyles = document.createElement("link");
   refreshStyles.rel = "stylesheet";
   refreshStyles.href = "ui-refresh.css";
   document.head.appendChild(refreshStyles);
+
+  // Create a profile photo editor. Images are compressed and saved only in this browser.
+  const hero = document.querySelector(".hero");
+  if (hero) {
+    const profileSection = document.createElement("section");
+    profileSection.className = "section profile-settings reveal";
+    profileSection.id = "profile-picture";
+    profileSection.setAttribute("aria-labelledby", "profile-picture-title");
+    profileSection.innerHTML = `
+      <div class="profile-settings-card">
+        <div class="profile-avatar-wrap">
+          <img class="profile-avatar-image" alt="Your selected profile picture" hidden>
+          <span class="profile-avatar-fallback" aria-hidden="true">AT</span>
+        </div>
+        <div class="profile-settings-copy">
+          <p class="mono">YOUR PROFILE</p>
+          <h2 id="profile-picture-title">Profile picture</h2>
+          <p>Choose a photo and change it whenever you like. Your selection is saved in this browser.</p>
+          <div class="profile-picture-actions">
+            <button class="btn primary profile-picture-change" type="button">Choose photo</button>
+            <button class="btn profile-picture-reset" type="button" hidden>Reset photo</button>
+            <input class="profile-picture-input" type="file" accept="image/*" hidden aria-label="Choose a profile picture">
+          </div>
+          <p class="profile-picture-status" role="status" aria-live="polite">JPG, PNG, GIF, or WebP · up to 10 MB</p>
+        </div>
+      </div>`;
+    hero.after(profileSection);
+
+    const photoInput = profileSection.querySelector(".profile-picture-input");
+    const changeButton = profileSection.querySelector(".profile-picture-change");
+    const resetButton = profileSection.querySelector(".profile-picture-reset");
+    const photoImage = profileSection.querySelector(".profile-avatar-image");
+    const fallback = profileSection.querySelector(".profile-avatar-fallback");
+    const status = profileSection.querySelector(".profile-picture-status");
+    const storageKey = "portfolio-profile-picture";
+    const defaultPhoto = document.querySelector(".profile-banner img")?.getAttribute("src") || "";
+
+    const showPhoto = (source, isCustom) => {
+      if (source) {
+        photoImage.src = source;
+        photoImage.hidden = false;
+        fallback.hidden = true;
+      } else {
+        photoImage.removeAttribute("src");
+        photoImage.hidden = true;
+        fallback.hidden = false;
+      }
+      resetButton.hidden = !isCustom;
+    };
+
+    try {
+      const savedPhoto = localStorage.getItem(storageKey);
+      if (savedPhoto) showPhoto(savedPhoto, true);
+      else if (defaultPhoto) showPhoto(defaultPhoto, false);
+    } catch {
+      if (defaultPhoto) showPhoto(defaultPhoto, false);
+    }
+
+    changeButton.addEventListener("click", () => photoInput.click());
+    photoInput.addEventListener("change", () => {
+      const file = photoInput.files?.[0];
+      if (!file) return;
+      if (!file.type.startsWith("image/")) {
+        status.textContent = "Please choose an image file.";
+        photoInput.value = "";
+        return;
+      }
+      if (file.size > 10 * 1024 * 1024) {
+        status.textContent = "That image is over 10 MB. Choose a smaller file.";
+        photoInput.value = "";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onerror = () => {
+        status.textContent = "We couldn't read that image. Please try another one.";
+        photoInput.value = "";
+      };
+      reader.onload = () => {
+        const source = new Image();
+        source.onerror = () => {
+          status.textContent = "That image couldn't be opened. Please try another one.";
+          photoInput.value = "";
+        };
+        source.onload = () => {
+          const maxDimension = 640;
+          const scale = Math.min(1, maxDimension / Math.max(source.width, source.height));
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.max(1, Math.round(source.width * scale));
+          canvas.height = Math.max(1, Math.round(source.height * scale));
+          const context = canvas.getContext("2d");
+          if (!context) {
+            status.textContent = "Photo editing isn't supported by this browser.";
+            return;
+          }
+          context.drawImage(source, 0, 0, canvas.width, canvas.height);
+          const compressedPhoto = canvas.toDataURL("image/jpeg", 0.82);
+          try {
+            localStorage.setItem(storageKey, compressedPhoto);
+            showPhoto(compressedPhoto, true);
+            status.textContent = "Profile photo saved in this browser. You can change it anytime.";
+          } catch {
+            showPhoto(compressedPhoto, false);
+            status.textContent = "Photo preview updated, but browser storage is full. Try a smaller image.";
+          }
+          photoInput.value = "";
+        };
+        source.src = String(reader.result);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    resetButton.addEventListener("click", () => {
+      try {
+        localStorage.removeItem(storageKey);
+      } catch {
+        // Restore the default preview even if browser storage is unavailable.
+      }
+      showPhoto(defaultPhoto, false);
+      status.textContent = defaultPhoto
+        ? "Restored the original profile photo."
+        : "Removed your saved photo.";
+    });
+  }
 
   // Keep contact links and any displayed copy in sync with the current email address.
   document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
