@@ -11,6 +11,31 @@
   const canvas = document.getElementById("stars");
   const cursorDot = document.querySelector(".cursor-dot");
   const cursorRing = document.querySelector(".cursor-ring");
+  const contactEmail = "abhijeettiwari0408@gmail.com";
+
+  // Load a focused visual refresh without changing the existing page structure.
+  const refreshStyles = document.createElement("link");
+  refreshStyles.rel = "stylesheet";
+  refreshStyles.href = "ui-refresh.css";
+  document.head.appendChild(refreshStyles);
+
+  // Keep contact links and any displayed copy in sync with the current email address.
+  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    const [address, ...query] = link.href.slice(7).split("?");
+    if (address) {
+      link.href = `mailto:${contactEmail}${query.length ? `?${query.join("?")}` : ""}`;
+    }
+  });
+  const emailText = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let textNode;
+  while ((textNode = emailText.nextNode())) {
+    if (textNode.nodeValue.includes("abhijeettiwari955@gmail.com")) {
+      textNode.nodeValue = textNode.nodeValue.replaceAll(
+        "abhijeettiwari955@gmail.com",
+        contactEmail
+      );
+    }
+  }
 
   // Keep the theme controls synchronized and remember the visitor's preference.
   const updateThemeButtons = () => {
@@ -141,7 +166,7 @@
       const body = encodeURIComponent(
         `Name: ${formData.get("name") || ""}\nEmail: ${formData.get("email") || ""}\n\n${formData.get("message") || ""}`
       );
-      window.location.href = `mailto:abhijeettiwari955@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
     });
   }
 
