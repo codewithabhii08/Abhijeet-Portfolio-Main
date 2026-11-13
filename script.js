@@ -13,32 +13,43 @@
   const cursorRing = document.querySelector(".cursor-ring");
   const contactEmail = "abhijeettiwari0408@gmail.com";
 
+  // Load a fresh stylesheet so browser/CDN caches don't keep showing the old layout.
   const refreshStyles = document.createElement("link");
   refreshStyles.rel = "stylesheet";
-  refreshStyles.href = "ui-refresh.css?v=profile-cert-fix";
+  refreshStyles.href = "ui-refresh.css?v=interview-2026-11-13";
   document.head.appendChild(refreshStyles);
 
-  // Fix certificate URLs (including case-sensitive folder/file naming on GitHub Pages).
+  // Use the exact case-sensitive certificate asset path present in the repository.
   document.querySelectorAll(".certificate-image-link").forEach((link) => {
     const image = link.querySelector("img");
     const certificatePath = "assets/certificates/Certificate.jpeg";
     link.href = certificatePath;
-    if (image) {
-      image.src = certificatePath;
-      image.alt = image.alt || "Abhijeet Tiwari's programming certificate";
-      image.loading = "lazy";
-      image.addEventListener("error", () => {
-        link.hidden = true;
-      }, { once: true });
-    }
-  });
-  document.querySelectorAll(".cert-strip, .certificate-showcase").forEach((card) => {
-    card.classList.add("certificate-card-fixed");
-    card.hidden = false;
-    card.classList.add("visible");
+    link.target = "_blank";
+    link.rel = "noopener";
+    if (!image) return;
+    image.src = certificatePath;
+    image.alt = "Abhijeet Tiwari's C++ certificate";
+    image.loading = "eager";
+    image.addEventListener("error", () => {
+      link.classList.add("certificate-image-unavailable");
+      link.setAttribute("aria-label", "Open C++ certificate file");
+      let message = link.querySelector(".certificate-image-fallback");
+      if (!message) {
+        message = document.createElement("span");
+        message.className = "certificate-image-fallback";
+        message.textContent = "Open certificate ↗";
+        link.appendChild(message);
+      }
+    }, { once: true });
   });
 
-  // Profile photo picker: profile.png is the default; uploaded image is local to this browser.
+  // Reveal and standardize certificate panels; don't let a failed preview hide its details.
+  document.querySelectorAll(".cert-strip, .certificate-showcase").forEach((card) => {
+    card.hidden = false;
+    card.classList.add("visible", "certificate-card-fixed");
+  });
+
+  // Profile photo: use the repository's profile.png by default; uploaded images stay local to this browser.
   const profileSection = document.getElementById("profile-picture");
   if (profileSection) {
     const changeButton = profileSection.querySelector(".profile-picture-change");
@@ -50,35 +61,33 @@
     const storageKey = "portfolio-profile-picture-v2";
     const defaultPhoto = "profile.png";
 
-    if (changeButton) {
+    if (changeButton && photoInput) {
       changeButton.textContent = "＋ Upload / change photo";
       changeButton.setAttribute("aria-label", "Upload or change profile photo");
-      changeButton.addEventListener("click", () => photoInput?.click());
+      changeButton.addEventListener("click", () => photoInput.click());
     }
-    if (resetButton) resetButton.textContent = "↺ Reset to profile.png";
+    if (resetButton) resetButton.textContent = "↺ Reset to original photo";
 
     const showPhoto = (source, custom) => {
-      if (source) {
+      if (source && photoImage) {
         photoImage.src = source;
         photoImage.hidden = false;
-        fallback.hidden = true;
+        if (fallback) fallback.hidden = true;
       } else {
-        photoImage.removeAttribute("src");
-        photoImage.hidden = true;
-        fallback.hidden = false;
+        photoImage?.removeAttribute("src");
+        if (photoImage) photoImage.hidden = true;
+        if (fallback) fallback.hidden = false;
       }
       if (resetButton) resetButton.hidden = !custom;
     };
 
-    if (photoImage) {
-      photoImage.addEventListener("error", () => {
-        if (photoImage.getAttribute("src") === defaultPhoto) {
-          photoImage.hidden = true;
-          fallback.hidden = false;
-          if (status) status.textContent = "Could not load profile.png. Check that the file is in the repository root.";
-        }
-      });
-    }
+    photoImage?.addEventListener("error", () => {
+      if (photoImage.getAttribute("src") === defaultPhoto) {
+        photoImage.hidden = true;
+        if (fallback) fallback.hidden = false;
+        if (status) status.textContent = "Could not load profile.png. Check the deployed site files.";
+      }
+    });
 
     photoInput?.addEventListener("change", () => {
       const file = photoInput.files?.[0];
@@ -106,7 +115,7 @@
           photoInput.value = "";
         };
         source.onload = () => {
-          const scale = Math.min(1, 640 / Math.max(source.width, source.height));
+          const scale = Math.min(1, 720 / Math.max(source.width, source.height));
           const resized = document.createElement("canvas");
           resized.width = Math.max(1, Math.round(source.width * scale));
           resized.height = Math.max(1, Math.round(source.height * scale));
@@ -116,7 +125,7 @@
             return;
           }
           context.drawImage(source, 0, 0, resized.width, resized.height);
-          const photo = resized.toDataURL("image/jpeg", 0.8);
+          const photo = resized.toDataURL("image/jpeg", 0.82);
           try {
             localStorage.setItem(storageKey, photo);
             showPhoto(photo, true);
@@ -133,9 +142,9 @@
     });
 
     resetButton?.addEventListener("click", () => {
-      try { localStorage.removeItem(storageKey); } catch { /* Continue with default photo. */ }
+      try { localStorage.removeItem(storageKey); } catch { /* Continue with the repository default. */ }
       showPhoto(defaultPhoto, false);
-      if (status) status.textContent = "Reset to profile.png.";
+      if (status) status.textContent = "Restored your original profile photo.";
     });
 
     try {
