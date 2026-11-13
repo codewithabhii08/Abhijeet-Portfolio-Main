@@ -2,6 +2,7 @@
   const root = document.documentElement;
   const intro = document.getElementById("intro");
   const site = document.getElementById("site");
+  const enter = document.getElementById("enter");
   const menu = document.getElementById("nav");
   const hamburger = document.getElementById("hamb");
   const typed = document.getElementById("typed");
@@ -12,53 +13,22 @@
   const cursorRing = document.querySelector(".cursor-ring");
   const contactEmail = "abhijeettiwari0408@gmail.com";
 
-  // Load the portfolio refresh styles without relying on a stale cached copy.
-  if (!document.querySelector('link[data-portfolio-refresh]')) {
-    const refreshStyles = document.createElement("link");
-    refreshStyles.rel = "stylesheet";
-    refreshStyles.href = "ui-refresh.css?v=interview-layout-2";
-    refreshStyles.dataset.portfolioRefresh = "true";
-    document.head.appendChild(refreshStyles);
-  }
+  // Load newer styling so a deployed/static page won't keep using a stale browser cache.
+  const refreshStyles = document.createElement("link");
+  refreshStyles.rel = "stylesheet";
+  refreshStyles.href = "ui-refresh.css?v=interview-layout-2";
+  document.head.appendChild(refreshStyles);
 
-  // Keep the welcome screen visible until the visitor explicitly enters.
-  const introStyles = document.createElement("style");
-  introStyles.textContent = `
-    .site:not(.ready) { visibility: hidden; opacity: 0; pointer-events: none; }
-    .site.ready { visibility: visible; opacity: 1; pointer-events: auto; transition: opacity .55s ease; }
-    .intro { z-index: 20; }
-    .intro-center { display: flex; flex-direction: column; align-items: center; }
-    .intro-enter { display:inline-flex; align-items:center; justify-content:center; gap:10px; margin-top:28px; padding:13px 24px; border:1px solid rgba(167,139,250,.55); border-radius:999px; background:linear-gradient(120deg,#a78bfa,#67b7ff); color:#10101b; font:700 14px Inter,system-ui,sans-serif; cursor:pointer; box-shadow:0 10px 32px rgba(103,91,200,.25); transition:transform .2s ease,box-shadow .2s ease; }
-    .intro-enter:hover { transform:translateY(-3px); box-shadow:0 15px 40px rgba(103,91,200,.38); }
-    .intro-enter:focus-visible { outline:3px solid #fff; outline-offset:4px; }
-    /* Compact profile-photo card: small portrait on the left, all controls/details on the right. */
-    .profile-settings { width:min(100% - 48px,1100px); max-width:1100px; margin:0 auto; padding:28px 0 42px; }
-    .profile-settings-card { display:grid; grid-template-columns:112px minmax(0,1fr); align-items:center; gap:24px; padding:24px 28px; text-align:left; border:1px solid rgba(164,184,209,.17); border-radius:20px; background:linear-gradient(135deg,rgba(167,139,250,.08),transparent 42%),rgba(14,21,33,.94); box-shadow:0 16px 42px rgba(0,0,0,.2); }
-    .profile-avatar-wrap { width:104px; height:104px; aspect-ratio:1; overflow:hidden; border:3px solid transparent; border-radius:50%; background:linear-gradient(#111a29,#111a29) padding-box,linear-gradient(135deg,#a78bfa,#67b7ff) border-box; box-shadow:0 8px 24px rgba(0,0,0,.24); }
-    .profile-avatar-image { display:block; width:100%; height:100%; object-fit:cover; object-position:center 25%; }
-    .profile-avatar-image[hidden],.profile-avatar-fallback[hidden] { display:none!important; }
-    .profile-avatar-fallback { display:grid; width:100%; height:100%; place-items:center; color:#a78bfa; font:800 34px/1 'Plus Jakarta Sans',sans-serif; }
-    .profile-settings-copy { min-width:0; }
-    .profile-settings-copy .mono { margin:0 0 4px; color:#a78bfa; }
-    .profile-settings-copy h2 { margin:0 0 4px; font:800 clamp(22px,3vw,30px)/1.2 'Plus Jakarta Sans',sans-serif; letter-spacing:-.04em; }
-    .profile-settings-copy > p:not(.mono) { max-width:640px; margin:0; color:#98a4b8; font-size:14px; line-height:1.55; }
-    .profile-picture-actions { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:14px; }
-    .profile-picture-actions .btn { min-height:40px; padding:9px 16px; border-radius:9px; cursor:pointer; }
-    .profile-picture-reset:not([hidden]) { display:inline-flex; align-items:center; justify-content:center; }
-    .profile-picture-status { min-height:1.4em; margin:8px 0 0; color:#98a4b8; font-size:12px; }
-    @media(max-width:620px) { .profile-settings { width:calc(100% - 32px); } .profile-settings-card { grid-template-columns:78px minmax(0,1fr); gap:15px; padding:18px 16px; } .profile-avatar-wrap { width:76px; height:76px; } .profile-avatar-fallback { font-size:27px; } .profile-settings-copy > p:not(.mono) { font-size:13px; } .profile-picture-actions .btn { padding:8px 12px; font-size:12px; } }
-    @media(prefers-reduced-motion:reduce) { .site.ready,.intro-enter { transition:none; } }
-  `;
-  document.head.appendChild(introStyles);
-
-  let enterButton = document.getElementById("enter");
-  if (intro && site && !enterButton) {
+  // A real Enter button is required before revealing the portfolio.
+  const introCenter = intro?.querySelector(".intro-center");
+  let enterButton = enter || document.getElementById("enter");
+  if (intro && site && introCenter && !enterButton) {
     enterButton = document.createElement("button");
     enterButton.id = "enter";
     enterButton.type = "button";
     enterButton.className = "intro-enter";
     enterButton.innerHTML = 'Enter to Portfolio <span aria-hidden="true">↗</span>';
-    intro.querySelector(".intro-center")?.appendChild(enterButton);
+    introCenter.appendChild(enterButton);
   }
 
   const revealSite = () => {
@@ -74,35 +44,40 @@
     revealSite();
   }
 
-  // Place the existing profile.png picker directly after the hero and keep its controls beside the image.
-  let profile = document.getElementById("profile-picture");
-  const hero = document.querySelector(".hero");
-  if (!profile && hero) {
-    profile = document.createElement("section");
-    profile.id = "profile-picture";
-    profile.className = "profile-settings reveal visible";
-    profile.setAttribute("aria-labelledby", "profile-picture-title");
-    profile.innerHTML = `
-      <div class="profile-settings-card">
-        <div class="profile-avatar-wrap">
-          <img class="profile-avatar-image" src="profile.png" alt="Abhijeet Tiwari profile photo">
-          <span class="profile-avatar-fallback" aria-hidden="true" hidden>AT</span>
-        </div>
-        <div class="profile-settings-copy">
-          <p class="mono">YOUR PROFILE</p>
-          <h2 id="profile-picture-title">Profile picture</h2>
-          <p>Use your profile photo or choose another image. Upload and reset controls are beside the picture.</p>
-          <div class="profile-picture-actions">
-            <button class="btn primary profile-picture-change" type="button">＋ Upload / change photo</button>
-            <button class="btn profile-picture-reset" type="button" hidden>↺ Reset to original photo</button>
-            <input class="profile-picture-input" type="file" accept="image/*" hidden aria-label="Choose a profile picture">
-          </div>
-          <p class="profile-picture-status" role="status" aria-live="polite">JPG, PNG, GIF or WebP · up to 10 MB</p>
-        </div>
-      </div>`;
-    hero.after(profile);
-  }
+  // Style tech-stack heading and its description on one line on desktop, stacked on mobile.
+  const skillsHeadingStyles = document.createElement("style");
+  skillsHeadingStyles.textContent = `
+    #skills > .section-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,.82fr); align-items:end; column-gap:clamp(28px,5vw,64px); row-gap:10px; max-width:930px; margin-bottom:30px; }
+    #skills > .section-head > .mono { grid-column:1/-1; margin:0 0 4px; }
+    #skills > .section-head > h2 { grid-column:1; grid-row:2; margin:0; font-size:clamp(28px,3.5vw,40px); line-height:1.16; }
+    #skills > .section-head > p:last-child { grid-column:2; grid-row:2; align-self:center; max-width:390px; margin:0; font-size:15px; line-height:1.7; }
+    @media(max-width:680px) { #skills > .section-head { grid-template-columns:minmax(0,1fr); row-gap:8px; } #skills > .section-head > .mono,#skills > .section-head > h2,#skills > .section-head > p:last-child { grid-column:1; grid-row:auto; } #skills > .section-head > h2 { font-size:clamp(27px,8vw,34px); } #skills > .section-head > p:last-child { max-width:100%; font-size:14px; } }
+  `;
+  document.head.appendChild(skillsHeadingStyles);
 
+  // Correct the case-sensitive certificate path and retain a useful link if preview fails.
+  document.querySelectorAll(".certificate-image-link").forEach((link) => {
+    const image = link.querySelector("img");
+    const certificatePath = "assets/certificates/Certificate.jpeg";
+    link.href = certificatePath;
+    link.target = "_blank";
+    link.rel = "noopener";
+    if (!image) return;
+    image.src = certificatePath;
+    image.alt = "Abhijeet Tiwari's programming certificate";
+    image.addEventListener("error", () => {
+      link.classList.add("certificate-image-unavailable");
+      if (!link.querySelector(".certificate-image-fallback")) {
+        const fallbackLink = document.createElement("span");
+        fallbackLink.className = "certificate-image-fallback";
+        fallbackLink.textContent = "Open certificate ↗";
+        link.appendChild(fallbackLink);
+      }
+    }, { once: true });
+  });
+
+  // Compact social-style avatar, with upload/reset controls remaining beside it.
+  const profile = document.getElementById("profile-picture");
   if (profile) {
     const change = profile.querySelector(".profile-picture-change");
     const reset = profile.querySelector(".profile-picture-reset");
@@ -119,10 +94,7 @@
     };
     if (change && input) {
       change.textContent = "＋ Upload / change photo";
-      if (!change.dataset.photoBound) {
-        change.addEventListener("click", () => input.click());
-        change.dataset.photoBound = "true";
-      }
+      if (!change.dataset.photoBound) { change.addEventListener("click", () => input.click()); change.dataset.photoBound = "true"; }
     }
     if (reset) reset.textContent = "↺ Reset to original photo";
     image?.addEventListener("error", () => {
@@ -145,15 +117,15 @@
           const source = new Image();
           source.onload = () => {
             const scale = Math.min(1, 720 / Math.max(source.width, source.height));
-            const canvas = document.createElement("canvas");
-            canvas.width = Math.max(1, Math.round(source.width * scale));
-            canvas.height = Math.max(1, Math.round(source.height * scale));
-            const context = canvas.getContext("2d");
+            const resized = document.createElement("canvas");
+            resized.width = Math.max(1, Math.round(source.width * scale));
+            resized.height = Math.max(1, Math.round(source.height * scale));
+            const context = resized.getContext("2d");
             if (!context) return;
-            context.drawImage(source, 0, 0, canvas.width, canvas.height);
-            const data = canvas.toDataURL("image/jpeg", 0.82);
-            try { localStorage.setItem(storageKey, data); showPhoto(data, true); if (status) status.textContent = "Photo saved in this browser."; }
-            catch { showPhoto(data, false); if (status) status.textContent = "Preview updated, but browser storage is full."; }
+            context.drawImage(source, 0, 0, resized.width, resized.height);
+            const photo = resized.toDataURL("image/jpeg", 0.82);
+            try { localStorage.setItem(storageKey, photo); showPhoto(photo, true); if (status) status.textContent = "Photo saved in this browser."; }
+            catch { showPhoto(photo, false); if (status) status.textContent = "Preview updated, but browser storage is full."; }
             input.value = "";
           };
           source.src = String(reader.result);
@@ -174,7 +146,7 @@
     catch { showPhoto(defaultPhoto, false); }
   }
 
-  // Normalize all email links to the requested address.
+  // Normalize contact links to the requested address.
   document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
     const [address, ...query] = link.href.slice(7).split("?");
     if (address) link.href = `mailto:${contactEmail}${query.length ? `?${query.join("?")}` : ""}`;
